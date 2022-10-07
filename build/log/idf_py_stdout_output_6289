@@ -1,0 +1,70 @@
+-- Found Git: /usr/bin/git (found version "2.25.1") 
+-- The C compiler identification is GNU 11.2.0
+-- The CXX compiler identification is GNU 11.2.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /home/rufcca/.espressif/tools/xtensa-esp32s3-elf/esp-2022r1-11.2.0/xtensa-esp32s3-elf/bin/xtensa-esp32s3-elf-gcc
+-- Check for working C compiler: /home/rufcca/.espressif/tools/xtensa-esp32s3-elf/esp-2022r1-11.2.0/xtensa-esp32s3-elf/bin/xtensa-esp32s3-elf-gcc
+-- Check for working C compiler: /home/rufcca/.espressif/tools/xtensa-esp32s3-elf/esp-2022r1-11.2.0/xtensa-esp32s3-elf/bin/xtensa-esp32s3-elf-gcc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /home/rufcca/.espressif/tools/xtensa-esp32s3-elf/esp-2022r1-11.2.0/xtensa-esp32s3-elf/bin/xtensa-esp32s3-elf-g++
+-- Check for working CXX compiler: /home/rufcca/.espressif/tools/xtensa-esp32s3-elf/esp-2022r1-11.2.0/xtensa-esp32s3-elf/bin/xtensa-esp32s3-elf-g++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Project is not inside a git repository, or git repository has no commits; will not use 'git describe' to determine PROJECT_VER.
+-- Building ESP-IDF components for target esp32s3
+-- Project sdkconfig file /home/rufcca/ble_eddystone/sdkconfig
+Loading defaults file /home/rufcca/ble_eddystone/sdkconfig.defaults...
+Loading defaults file /home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3...
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:325 CONFIG_ESP32S3_DEFAULT_CPU_FREQ_80 was replaced with CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_80
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:326 CONFIG_ESP32S3_DEFAULT_CPU_FREQ_160 was replaced with CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_160
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:327 CONFIG_ESP32S3_DEFAULT_CPU_FREQ_240 was replaced with CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_240
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:328 CONFIG_ESP32S3_DEFAULT_CPU_FREQ_MHZ was replaced with CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:360 CONFIG_ESP32S3_DEBUG_OCDAWARE was replaced with CONFIG_ESP_DEBUG_OCDAWARE
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:362 CONFIG_ESP32S3_BROWNOUT_DET was replaced with CONFIG_ESP_BROWNOUT_DET
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:363 CONFIG_ESP32S3_BROWNOUT_DET_LVL_SEL_7 was replaced with CONFIG_ESP_BROWNOUT_DET_LVL_SEL_7
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:364 CONFIG_ESP32S3_BROWNOUT_DET_LVL_SEL_6 was replaced with CONFIG_ESP_BROWNOUT_DET_LVL_SEL_6
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:365 CONFIG_ESP32S3_BROWNOUT_DET_LVL_SEL_5 was replaced with CONFIG_ESP_BROWNOUT_DET_LVL_SEL_5
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:366 CONFIG_ESP32S3_BROWNOUT_DET_LVL_SEL_4 was replaced with CONFIG_ESP_BROWNOUT_DET_LVL_SEL_4
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:367 CONFIG_ESP32S3_BROWNOUT_DET_LVL_SEL_3 was replaced with CONFIG_ESP_BROWNOUT_DET_LVL_SEL_3
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:368 CONFIG_ESP32S3_BROWNOUT_DET_LVL_SEL_2 was replaced with CONFIG_ESP_BROWNOUT_DET_LVL_SEL_2
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:369 CONFIG_ESP32S3_BROWNOUT_DET_LVL_SEL_1 was replaced with CONFIG_ESP_BROWNOUT_DET_LVL_SEL_1
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:370 CONFIG_ESP32S3_BROWNOUT_DET_LVL was replaced with CONFIG_ESP_BROWNOUT_DET_LVL
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:371 CONFIG_ESP32S3_TIME_SYSCALL_USE_RTC_FRC1 was replaced with CONFIG_NEWLIB_TIME_SYSCALL_USE_RTC_HRT
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:372 CONFIG_ESP32S3_TIME_SYSCALL_USE_RTC was replaced with CONFIG_NEWLIB_TIME_SYSCALL_USE_RTC
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:373 CONFIG_ESP32S3_TIME_SYSCALL_USE_FRC1 was replaced with CONFIG_NEWLIB_TIME_SYSCALL_USE_HRT
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:374 CONFIG_ESP32S3_TIME_SYSCALL_USE_NONE was replaced with CONFIG_NEWLIB_TIME_SYSCALL_USE_NONE
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:458 CONFIG_ESP32_PHY_INIT_DATA_IN_PARTITION was replaced with CONFIG_ESP_PHY_INIT_DATA_IN_PARTITION
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:459 CONFIG_ESP32_PHY_MAX_WIFI_TX_POWER was replaced with CONFIG_ESP_PHY_MAX_WIFI_TX_POWER
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:460 CONFIG_ESP32_PHY_MAX_TX_POWER was replaced with CONFIG_ESP_PHY_MAX_TX_POWER
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:1053 CONFIG_ESP_TASK_WDT was replaced with CONFIG_ESP_TASK_WDT_INIT
+/home/rufcca/ble_eddystone/sdkconfig.defaults.esp32s3:1210 CONFIG_OTA_ALLOW_HTTP was replaced with CONFIG_ESP_HTTPS_OTA_ALLOW_HTTP
+-- Looking for sys/types.h
+-- Looking for sys/types.h - found
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stddef.h
+-- Looking for stddef.h - found
+-- Check size of time_t
+-- Check size of time_t - done
+-- Found Python3: /home/rufcca/.espressif/python_env/idf5.1_py3.8_env/bin/python (found version "3.8.10") found components: Interpreter 
+-- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS
+-- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS - Success
+-- App "ble_eddystone_demo" version: 1
+-- Adding linker script /home/rufcca/ble_eddystone/build/esp-idf/esp_system/ld/memory.ld
+-- Adding linker script /home/rufcca/esp/esp-idf/components/esp_system/ld/esp32s3/sections.ld.in
+-- Adding linker script /home/rufcca/esp/esp-idf/components/esp_rom/esp32s3/ld/esp32s3.rom.ld
+-- Adding linker script /home/rufcca/esp/esp-idf/components/esp_rom/esp32s3/ld/esp32s3.rom.api.ld
+-- Adding linker script /home/rufcca/esp/esp-idf/components/esp_rom/esp32s3/ld/esp32s3.rom.libgcc.ld
+-- Adding linker script /home/rufcca/esp/esp-idf/components/esp_rom/esp32s3/ld/esp32s3.rom.newlib.ld
+-- Adding linker script /home/rufcca/esp/esp-idf/components/esp_rom/esp32s3/ld/esp32s3.rom.version.ld
+-- Adding linker script /home/rufcca/esp/esp-idf/components/soc/esp32s3/ld/esp32s3.peripherals.ld
+-- Components: app_trace app_update bootloader bootloader_support bt cmock console cxx driver efuse esp-tls esp_adc esp_app_format esp_common esp_eth esp_event esp_gdbstub esp_hid esp_http_client esp_http_server esp_https_ota esp_https_server esp_hw_support esp_lcd esp_local_ctrl esp_netif esp_phy esp_pm esp_psram esp_ringbuf esp_rom esp_serial_slave_link esp_system esp_timer esp_wifi espcoredump esptool_py fatfs freertos hal heap http_parser idf_test ieee802154 json log lwip main mbedtls mqtt newlib nvs_flash openthread partition_table perfmon protobuf-c protocomm pthread sdmmc soc spi_flash spiffs tcp_transport tinyusb touch_element ulp unity usb vfs wear_levelling wifi_provisioning wpa_supplicant xtensa
+-- Component paths: /home/rufcca/esp/esp-idf/components/app_trace /home/rufcca/esp/esp-idf/components/app_update /home/rufcca/esp/esp-idf/components/bootloader /home/rufcca/esp/esp-idf/components/bootloader_support /home/rufcca/esp/esp-idf/components/bt /home/rufcca/esp/esp-idf/components/cmock /home/rufcca/esp/esp-idf/components/console /home/rufcca/esp/esp-idf/components/cxx /home/rufcca/esp/esp-idf/components/driver /home/rufcca/esp/esp-idf/components/efuse /home/rufcca/esp/esp-idf/components/esp-tls /home/rufcca/esp/esp-idf/components/esp_adc /home/rufcca/esp/esp-idf/components/esp_app_format /home/rufcca/esp/esp-idf/components/esp_common /home/rufcca/esp/esp-idf/components/esp_eth /home/rufcca/esp/esp-idf/components/esp_event /home/rufcca/esp/esp-idf/components/esp_gdbstub /home/rufcca/esp/esp-idf/components/esp_hid /home/rufcca/esp/esp-idf/components/esp_http_client /home/rufcca/esp/esp-idf/components/esp_http_server /home/rufcca/esp/esp-idf/components/esp_https_ota /home/rufcca/esp/esp-idf/components/esp_https_server /home/rufcca/esp/esp-idf/components/esp_hw_support /home/rufcca/esp/esp-idf/components/esp_lcd /home/rufcca/esp/esp-idf/components/esp_local_ctrl /home/rufcca/esp/esp-idf/components/esp_netif /home/rufcca/esp/esp-idf/components/esp_phy /home/rufcca/esp/esp-idf/components/esp_pm /home/rufcca/esp/esp-idf/components/esp_psram /home/rufcca/esp/esp-idf/components/esp_ringbuf /home/rufcca/esp/esp-idf/components/esp_rom /home/rufcca/esp/esp-idf/components/esp_serial_slave_link /home/rufcca/esp/esp-idf/components/esp_system /home/rufcca/esp/esp-idf/components/esp_timer /home/rufcca/esp/esp-idf/components/esp_wifi /home/rufcca/esp/esp-idf/components/espcoredump /home/rufcca/esp/esp-idf/components/esptool_py /home/rufcca/esp/esp-idf/components/fatfs /home/rufcca/esp/esp-idf/components/freertos /home/rufcca/esp/esp-idf/components/hal /home/rufcca/esp/esp-idf/components/heap /home/rufcca/esp/esp-idf/components/http_parser /home/rufcca/esp/esp-idf/components/idf_test /home/rufcca/esp/esp-idf/components/ieee802154 /home/rufcca/esp/esp-idf/components/json /home/rufcca/esp/esp-idf/components/log /home/rufcca/esp/esp-idf/components/lwip /home/rufcca/ble_eddystone/main /home/rufcca/esp/esp-idf/components/mbedtls /home/rufcca/esp/esp-idf/components/mqtt /home/rufcca/esp/esp-idf/components/newlib /home/rufcca/esp/esp-idf/components/nvs_flash /home/rufcca/esp/esp-idf/components/openthread /home/rufcca/esp/esp-idf/components/partition_table /home/rufcca/esp/esp-idf/components/perfmon /home/rufcca/esp/esp-idf/components/protobuf-c /home/rufcca/esp/esp-idf/components/protocomm /home/rufcca/esp/esp-idf/components/pthread /home/rufcca/esp/esp-idf/components/sdmmc /home/rufcca/esp/esp-idf/components/soc /home/rufcca/esp/esp-idf/components/spi_flash /home/rufcca/esp/esp-idf/components/spiffs /home/rufcca/esp/esp-idf/components/tcp_transport /home/rufcca/esp/esp-idf/components/tinyusb /home/rufcca/esp/esp-idf/components/touch_element /home/rufcca/esp/esp-idf/components/ulp /home/rufcca/esp/esp-idf/components/unity /home/rufcca/esp/esp-idf/components/usb /home/rufcca/esp/esp-idf/components/vfs /home/rufcca/esp/esp-idf/components/wear_levelling /home/rufcca/esp/esp-idf/components/wifi_provisioning /home/rufcca/esp/esp-idf/components/wpa_supplicant /home/rufcca/esp/esp-idf/components/xtensa
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/rufcca/ble_eddystone/build
