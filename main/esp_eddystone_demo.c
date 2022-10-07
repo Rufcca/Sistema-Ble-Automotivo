@@ -48,13 +48,28 @@ static void esp_eddystone_show_inform(const esp_eddystone_result_t* res)
     switch(res->common.frame_type)
     {
         case EDDYSTONE_FRAME_TYPE_UID: {
-            ESP_LOGI(DEMO_TAG, "Eddystone UID inform:");
-            ESP_LOGI(DEMO_TAG, "Measured power(RSSI at 0m distance):%d dbm", res->inform.uid.ranging_data);
-            ESP_LOGI(DEMO_TAG, "EDDYSTONE_DEMO: Namespace ID:0x");
-            esp_log_buffer_hex(DEMO_TAG, res->inform.uid.namespace_id, 10);
-            ESP_LOGI(DEMO_TAG, "EDDYSTONE_DEMO: Instance ID:0x");
-            esp_log_buffer_hex(DEMO_TAG, res->inform.uid.instance_id, 6);
-            break;
+            //ESP_LOGI(DEMO_TAG, "Eddystone UID inform:");
+            //ESP_LOGI(DEMO_TAG, "Measured power(RSSI at 0m distance):%d dbm", res->inform.uid.ranging_data);
+            //ESP_LOGI(DEMO_TAG, "EDDYSTONE_DEMO: Namespace ID:0x");
+            //esp_log_buffer_hex(DEMO_TAG, res->inform.uid.namespace_id, 10);
+            //ESP_LOGI(DEMO_TAG, "EDDYSTONE_DEMO: Instance ID:0x");
+            //esp_log_buffer_hex(DEMO_TAG, res->inform.uid.instance_id, 6);
+            int i = 0;
+			int tr = 0;
+			char reference_bytes[] = {0x64,0x21,0x05,0xD5,0x14,0xE8,0x95,0xAD,0x70,0x58};
+			while(i < 10)
+			{
+				if(reference_bytes[i] == res->inform.uid.namespace_id[i])
+				{
+					tr++;
+				}
+				i++;
+			}
+			if(tr == i)
+			{
+				ESP_LOGI(DEMO_TAG,"Chave encontrada");
+			}
+			break;
         }
         case EDDYSTONE_FRAME_TYPE_URL: {
             ESP_LOGI(DEMO_TAG, "Eddystone URL inform:");
@@ -112,9 +127,9 @@ static void esp_gap_cb(esp_gap_ble_cb_event_t event, esp_ble_gap_cb_param_t* par
                         // The received adv data is a correct eddystone frame packet.
                         // Here, we get the eddystone infomation in eddystone_res, we can use the data in res to do other things.
                         // For example, just print them:
-                        ESP_LOGI(DEMO_TAG, "--------Eddystone Found----------");
-                        esp_log_buffer_hex("EDDYSTONE_DEMO: Device address:", scan_result->scan_rst.bda, ESP_BD_ADDR_LEN);
-                        ESP_LOGI(DEMO_TAG, "RSSI of packet:%d dbm", scan_result->scan_rst.rssi);
+                        //ESP_LOGI(DEMO_TAG, "--------Eddystone Found----------");
+                        //esp_log_buffer_hex("EDDYSTONE_DEMO: Device address:", scan_result->scan_rst.bda, ESP_BD_ADDR_LEN);
+                        //ESP_LOGI(DEMO_TAG, "RSSI of packet:%d dbm", scan_result->scan_rst.rssi);
                         esp_eddystone_show_inform(&eddystone_res);
                     }
                     break;
