@@ -28,9 +28,18 @@
 #include "freertos/task.h"
 #include "driver/gpio.h"
 
+
+int i = 0;
+int j = 0;
+int tr = 0;
+int sum_rssi = 0;
+int med_rssi = 0;
+int64_t delta;
+char last_d_c = 0;
 char door_signal = 0;
 char door_control = 0;
 char key_found = 0;
+char reference_bytes[] = {0x64,0x21,0x05,0xD5,0x14,0xE8,0x95,0xAD,0x70,0x58};
 struct timeval start_count;
 struct timeval current_count;
 
@@ -51,13 +60,10 @@ static esp_ble_scan_params_t ble_scan_params = {
 
 static void esp_eddystone_show_inform(const esp_eddystone_result_t* res , int rssi)
 {
-    switch(res->common.frame_type)
+	switch(res->common.frame_type)
     {
         case EDDYSTONE_FRAME_TYPE_UID: 
-		{           
-            int i = 0;
-			int tr = 0;
-			char reference_bytes[] = {0x64,0x21,0x05,0xD5,0x14,0xE8,0x95,0xAD,0x70,0x58};
+		{
 			while(i < 10)
 			{
 				if(reference_bytes[i] == res->inform.uid.namespace_id[i])
@@ -66,10 +72,23 @@ static void esp_eddystone_show_inform(const esp_eddystone_result_t* res , int rs
 				}
 				i++;
 			}
-			if(tr == i)
+			if(j <= 4)
+			{
+				sum_rssi = sum_rssi + rssi;
+				//ESP_LOGI(DEMO_TAG,"medi_rssi = %d", med_rssi);
+				//ESP_LOGI(DEMO_TAG,"delta = %lld",delta);
+				j++;
+			}
+			else
+			{
+				med_rssi = (sum_rssi / j);
+				sum_rssi = 0;
+				j = 0;
+			}
+			if(tr == i && med_rssi >= -66)
 			{
 				key_found = 1;
-				//ESP_LOGI(DEMO_TAG,"Chave encontrada , rssi = %d", rssi);
+				ESP_LOGI(DEMO_TAG,"Chave encontrada");
 				gettimeofday(&start_count,NULL);
 			}
 			break;
@@ -102,7 +121,7 @@ static void esp_gap_cb(esp_gap_ble_cb_event_t event, esp_ble_gap_cb_param_t* par
         case ESP_GAP_BLE_SCAN_RESULT_EVT: {
             esp_ble_gap_cb_param_t* scan_result = (esp_ble_gap_cb_param_t*)param;
             switch(scan_result->scan_rst.search_evt)
-            {
+				{
                 case ESP_GAP_SEARCH_INQ_RES_EVT: {
                     esp_eddystone_result_t eddystone_res;
                     memset(&eddystone_res, 0, sizeof(eddystone_res));
@@ -182,8 +201,6 @@ void pin_config_set_state(int gpio_num)
 }
 void vDoorControlTask(void *pvParameter)
 {
-	char last_d_c = 0;
-	int64_t delta;
 	esp_log_level_set("gpio", ESP_LOG_WARN);
 	for(;;)
 	{
@@ -192,12 +209,10 @@ void vDoorControlTask(void *pvParameter)
 		delta = (((int64_t)current_count.tv_sec *1E06 + (int64_t) current_count.tv_usec)- ((int64_t)start_count.tv_sec *1E06 + (int64_t)start_count.tv_usec)) ;
 		if(delta >= 5E06)
 		{
+			med_rssi = - 66 - 1;
 			key_found = 0;
-			delta = 0;
 			start_count.tv_sec = 0;
 			start_count.tv_usec = 0;
-			current_count.tv_sec = 0;
-			current_count.tv_usec = 0;
 		}
 		if(!key_found && !door_signal)
 		{
@@ -221,7 +236,6 @@ void vDoorControlTask(void *pvParameter)
 		{
 			if(door_control == 1)
 			{
-				ESP_LOGI(DEMO_TAG,"Função abertura de porta");
 				gpio_config_t door_led;
 				door_led.pin_bit_mask = (1ULL<<GPIO_NUM_6);
 				door_led.mode = GPIO_MODE_OUTPUT;
@@ -232,11 +246,11 @@ void vDoorControlTask(void *pvParameter)
 				gpio_set_level(GPIO_NUM_6,1);
 				gpio_set_level(GPIO_NUM_5,0);
 				
+				ESP_LOGI(DEMO_TAG,"Função abertura de porta");
 				pin_config_set_state(GPIO_NUM_35);
 			}
 			else
 			{
-				ESP_LOGI(DEMO_TAG,"Função fechamento de porta");
 				gpio_config_t door_state;
 				door_state.pin_bit_mask = (1ULL<<GPIO_NUM_5);
 				door_state.mode = GPIO_MODE_OUTPUT;
@@ -247,6 +261,7 @@ void vDoorControlTask(void *pvParameter)
 				gpio_set_level(GPIO_NUM_6,0);
 				gpio_set_level(GPIO_NUM_5,1);
 
+				ESP_LOGI(DEMO_TAG,"Função fechamento de porta");
 				pin_config_set_state(GPIO_NUM_36);
 			}
 			last_d_c = door_control;
