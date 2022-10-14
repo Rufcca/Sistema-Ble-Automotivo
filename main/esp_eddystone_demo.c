@@ -36,6 +36,8 @@ int sum_rssi = 0;
 int med_rssi = 0;
 int64_t delta;
 char last_d_c = 0;
+char last_d_s = 0;
+char last_k_f = 0;
 char door_signal = 0;
 char door_control = 0;
 char key_found = 0;
@@ -182,7 +184,7 @@ void pin_config_check_state(int gpio_num)
 	door_conf.intr_type = GPIO_INTR_DISABLE;
 	gpio_config(&door_conf);
 	door_signal = gpio_get_level(gpio_num);
-
+	ESP_LOGI(DEMO_TAG,"%d",gpio_get_level(gpio_num));
 }
 void pin_config_set_state(int gpio_num)
 {
@@ -196,8 +198,6 @@ void pin_config_set_state(int gpio_num)
 	gpio_set_level(gpio_num,1);
 	vTaskDelay(250/portTICK_PERIOD_MS);
 	gpio_set_level(gpio_num,0);
-	door_state_control.mode = GPIO_MODE_INPUT;
-	gpio_config(&door_state_control);
 }
 void vDoorControlTask(void *pvParameter)
 {
@@ -214,23 +214,49 @@ void vDoorControlTask(void *pvParameter)
 			start_count.tv_sec = 0;
 			start_count.tv_usec = 0;
 		}
-		if(!key_found && !door_signal)
+		//if(!key_found && !door_signal)
+		//{
+		//	door_control = 0;
+		//}
+		//else if(key_found && !door_signal)
+		//{
+		//	door_control = door_signal;
+		//}
+		//else if(key_found && door_signal)
+		//{
+		//	door_control = 1;
+		//}
+		//else
+		//{
+		//	door_control = 1;
+		//}
+		if(last_k_f != key_found)
 		{
-			door_control = 0;
-		}
-		else if(key_found && !door_signal)
-		{
-			door_control = 1;
-		}
-		else if(key_found && door_signal)
-		{
-			door_control = 1;
+			if(key_found == 1)
+			{
+				door_control = 1;
+			}
+			else
+			{
+				door_control = 0;
+			}
+			last_k_f = key_found;
 		}
 		else
 		{
-			door_control = 0;
+			if(last_d_s != door_signal)
+			{
+				if(door_signal == 1)
+				{
+					door_control = 1;
+				}
+				else
+				{
+					door_control = 0;
+				}
+				last_d_s = door_signal;
+			}
 		}
-
 		
 		if(last_d_c != door_control)
 		{
